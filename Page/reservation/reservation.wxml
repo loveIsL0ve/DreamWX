@@ -1,0 +1,54 @@
+<!--pages/activity/sakura/spotbooking/spotbooking.wxml-->
+
+<view class="cu-custom" style='width:100%;height:400rpx'>
+    <image src='https://whusu.oss-cn-shanghai.aliyuncs.com/media/view/miniPg/%E4%B8%B4%E6%97%B6%E9%A2%84%E7%BA%A6Beta.png'
+           mode='widthFix' class='png' style='width:100%;height:400rpx'></image>
+    <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+        <navigator class='action border-custom' open-type="navigateBack" delta="1" hover-class="none"
+                   style='width:{{Custom.width}}px;height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px)'>
+            <text class='icon-back text-white'></text>
+            <text class='icon-homefill text-white'></text>
+        </navigator>
+    </view>
+</view>
+
+<view class="cu-form-group margin-top">
+    <view class='title'>姓名</view>
+    <input placeholder="您的真实姓名" class='radius' name='input' bindinput="inputName"></input>
+</view>
+<view class="cu-form-group">
+    <view class='title'>手机号</view>
+    <input placeholder="您也可以手动输入" class='radius' name='input' bindinput="inputPhone"></input>
+    <button class='cu-btn bg-green shadow' open-type='getPhoneNumber' bindgetphonenumber='getPhoneNumber'>自动填写</button>
+</view>
+<view class="cu-form-group">
+    <view class='title'>身份证号</view>
+    <input placeholder="请输入身份证号码" class='radius' name='input' bindinput="inputID"></input>
+</view>
+
+<view class="padding flex flex-direction">
+    <button class='cu-btn bg-green lg' bind:tap="submit">提交预约信息</button>
+</view>
+
+<view class="cu-modal {{modalName=='Modal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class='content'>提示</view>
+      <view class='action' bindtap='hideModal'>
+        <text class='icon-close text-red'></text>
+      </view>
+    </view>
+    <view class='padding-xl'>
+      {{tips}}
+    </view>
+  </view>
+</view>
+
+<view class='solids-bottom padding-xs align-center margin-top text-grey text-sm'>
+    <view>注意事项：</view>
+    <view>1、现场预约通道会根据校园内游客数量不定时开放。</view>
+    <view>2、该通道必须携带身份证才能使用。</view>
+    <view>3、此界面只作为用户填写信息界面，不作为入校凭证。</view>
+    <view>4、每个微信号每天只能预约一次。</view>
+    <view>5、提交后会出现临时预约凭证，当开通临时预约通道时您可以通过该凭证进入校园。</view>
+</view>
