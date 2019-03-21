@@ -1,0 +1,33 @@
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-pink" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text> 二维码
+    </navigator>
+  </view>
+</view>
+<view class="cu-card case">
+    <view class="cu-item shadow">
+        <view class="cu-list menu menu-avatar">
+            <view class="cu-item">
+                <view class="cu-avatar round lg" style="background-image:url({{userInfo.avatarUrl}});"></view>
+                <view class='content flex-sub'>
+                    <view class='text-grey'>{{trueName}}</view>
+                    <view class='text-gray text-sm flex justify-between'>
+                        {{organization}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="grid col-1 flex-sub padding-lr" hidden='{{hidQrcode}}'>
+        <view style="width:auto; height:auto;margin:0 auto">
+        <canvas class='canvas' style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px;" canvas-id='canvas' bindlongtap='save' catchtap='changeQrcode'></canvas>
+        </view>
+        </view>
+        
+        <view class='text-gray text-sm text-right padding'>
+            <text hidden='{{hidText}}' catchtap='reloadQrcode'>请点击重新获取二维码</text>
+            <view class='countDown'>倒计时：<text style='color:red'>{{countDownNum}}</text>s</view>
+        </view>
+
+    </view>
+</view>

@@ -1,0 +1,32 @@
+{
+  "pages":[
+    "Page/start/start",
+    "Page/choose/choose",
+    "Page/qiandao/qiandao",
+    "Page/qrcode/qrcode",
+    "Page/cherryMap/cherryMap",
+    "Page/index/index",
+    "Page/component/out/out"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果"
+    }
+  },
+  "window":{
+    "navigationBarBackgroundColor": "white",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle":"light",
+    "navigationBarTitleText" : "梦想珈",
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {
+    "van-popup": "dist/popup/index",
+    "i-rate": "dist/rate/index",
+    "i-tabs": "dist/tabs/index",
+    "i-tab": "dist/tab/index",
+    "i-tab-bar": "dist/tabbar/index",
+    "i-tab-bar-item": "dist/tabbar-item/index"
+  }
+
+}

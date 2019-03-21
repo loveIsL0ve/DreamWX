@@ -1,0 +1,92 @@
+<view class="cu-custom" style='width:100%;height:400rpx'>
+    <image src='../../images/BasicsBg.png' mode='widthFix' class='png' mode='widthFix' style='width:100%;height:400rpx'></image>
+    <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+        <navigator class='action border-custom' open-type="navigateBack" delta="1" hover-class="none"
+                   style='width:{{Custom.width}}px;height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px)'>
+            <text class='icon-back'></text>
+            <text class='icon-homefill'></text>
+        </navigator>
+    </view>
+</view>
+<view class="cu-list menu">
+    <view class="cu-item">
+        <view class='content padding-tb-sm'>
+            <view>
+                <text class='icon-news text-blue'></text>
+                是否为在校生
+            </view>
+            <view class='text-gray text-sm'>
+                <text class='icon-info'></text>
+                我们需要根据这条数据来选择您的绑定方式
+            </view>
+        </view>
+        <view class='action'>
+            <switch bindchange='switch1'></switch>
+        </view>
+    </view>
+</view>
+
+<view class="cu-form-group" hidden='{{isHidden}}'>
+    <view class='title'>学校/学位</view>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+<view class="picker">{{_school}}/{{_degree}}</view>
+    </picker>
+</view>
+
+<form>
+    <view class="margin-top">
+        <!--手动填充部分-->
+        <view class="cu-form-group" hidden='{{S3}}'>
+            <view class='title'>姓名</view>
+            <input placeholder="请输入您的姓名" bindinput="handleInputName" class='radius' name='name' type="text"></input>
+        </view>
+        <view class="cu-form-group"  hidden='{{S6}}'>
+            <view class='title'>性别</view>
+            <switch class='switch-sex' bindchange='switch2' checked='true'></switch>
+        </view>
+
+        <view class="cu-form-group" hidden='{{S4}}'>
+            <view class='title'>生日</view>
+            <picker mode="date" value="2015-09-01" start="1900-09-01" end="2020-09-01" bindchange="DateChange">
+                <view class="picker">
+                    {{date}}
+                </view>
+            </picker>
+        </view>
+
+        <!--自动认证部分-->
+        <view class="cu-form-group" hidden='{{S0}}'>
+            <view class='title'>学号</view>
+            <input placeholder="您所在学校的学号" bindinput="handleInputNum" class='radius' name='studentnum' type="number"></input>
+        </view>
+        <view class="cu-form-group" hidden='{{S1}}'>
+            <view class='title'>密码</view>
+            <input placeholder="教务系统密码" bindinput="handleInputPwd" class='radius' name='password' type="password"></input>
+            <!-- 眼睛图标两个 -->
+            <!--<text class='icon-attention text-grey'></text>-->
+            <text class='icon-attentionforbid text-grey'></text>
+        </view>
+
+        <!-- 必填手机号部分 -->
+        <view class="cu-form-group" hidden='{{S2}}'>
+            <view class='title'>手机</view>
+            <input placeholder="{{showPhoneNum}}" class='radius2' name='phone' type="number" disabled='true'></input>
+            <button class='cu-btn bg-green shadow' open-type='getPhoneNumber' bindgetphonenumber='getPhoneNumber'>自动填写</button>
+            <!--<button class='cu-btn bg-green shadow'>发送验证码</button>-->
+        </view>
+        <!-->
+        <view class="cu-form-group" hidden='{{hidVerCode}}'>
+            <view class='title'>验证码</view>
+            <input placeholder="请输入短信验证码" class='radius1' name='vfcode' type="number" bindinput='handleInputCode'></input>
+
+              <view class='vertificate' bindtap="getVerificationCode">{{time}}
+                <text>{{suffix}}</text>
+              </view>
+        </view>-->
+    </view>
+    <view class="padding flex flex-direction">
+        <button class='cu-btn bg-green lg shadow' catchtap='formsubmit' hidden='{{!hidBinding}}'>提交绑定</button>
+        <button class='cu-btn block bg-green margin-tb-sm lg' hidden='{{hidBinding}}'>
+            <text class='icon-loading2 iconfont-spin'></text> 绑定中</button>
+    </view>
+</form>

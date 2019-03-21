@@ -1,0 +1,24 @@
+/* pages/user/qrcode/qrcode.wxss */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.container image {
+  width: 686rpx;
+  height: 686rpx;
+  background-color: #f9f9f9;
+}
+.canvas-box {
+  position: fixed;
+  top: 9999999rpx;
+  left: 100rpx;
+}
+.grid col-1 flex-sub padding-lr{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}

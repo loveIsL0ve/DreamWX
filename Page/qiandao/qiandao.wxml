@@ -1,0 +1,91 @@
+<view class="cu-custom" style='width:100%;height:400rpx'>
+    <image src='https://whusu.oss-cn-shanghai.aliyuncs.com/media/view/miniPg/%E6%A8%B1%E8%8A%B1%E5%AD%A3Beta-Bg.png'
+           mode='widthFix' class='png' style='width:100%;height:400rpx'></image>
+    <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+        <navigator class='action border-custom' open-type="navigateBack" delta="1" hover-class="none"
+                   style='width:{{Custom.width}}px;height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px)'>
+            <text class='icon-back text-white'></text>
+            <text class='icon-homefill text-white'></text>
+        </navigator>
+    </view>
+</view>
+
+<view class="cu-list menu menu-avatar">
+    <view class="cu-item {{signin.switch?'arrow':''}}">
+        <view class="cu-avatar radius lg"
+              style="background-image:url({{userInfo.avatarUrl}});"></view>
+        <view class='content'>
+            <view>{{user.name}}</view>
+            <view class='text-gray text-sm'>
+                {{user.organization}}
+            </view>
+        </view>
+        <view class='action'>
+            <view class='text-grey text-sm' catchtap='scan'>{{signin.switch?(signWay?'扫码签到':'扫码签退'):''}}</view>
+        </view>
+    </view>
+</view>
+<view class="cu-list menu" style="display:{{signin.switch?'block':'none'}}">
+    <view class="cu-item">
+        <view class='content padding-tb-sm'>
+            <view>
+                <text class='icon-clothesfill text-blue'></text>
+                是否为签到扫码
+            </view>
+            <view class='text-gray text-sm'>
+                <text class='icon-infofill'></text>
+                选择后点击上方扫码即可！
+            </view>
+        </view>
+        <view class='action'>
+            <switch bindchange='switch1' checked='true'></switch>
+        </view>
+    </view>
+</view>
+<view class="cu-list menu">
+    <view class="cu-item">
+        <view class='content'>
+            <text class='icon-calendar text-green'></text>
+            <text class='text-grey'>签到状态</text>
+        </view>
+        <view class='action'>
+            <text class='text-grey text-sm'>{{signin.work?'工作中':'未签到'}}</text>
+        </view>
+    </view>
+    <view class="cu-item">
+        <view class='content'>
+            <text class='icon-time text-blue'></text>
+            <text class='text-grey'>当前时段</text>
+        </view>
+        <view class='action'>
+            <text class='text-grey text-sm'>{{signin.between}}</text>
+        </view>
+    </view>
+    <view class="cu-item">
+        <view class='content'>
+            <text class='icon-expressman text-yellow'></text>
+            <text class='text-grey'>有效工时</text>
+        </view>
+        <view class='action'>
+            <text class='text-grey text-sm'>{{signin.work_hours?signin.work_hours+'小时':'暂无记录'}}</text>
+        </view>
+    </view>
+    <view class="cu-item">
+        <view class='content'>
+            <text class='icon-sort text-cyan'></text>
+            <text class='text-grey'>工时排名</text>
+        </view>
+        <view class='action'>
+            <text class='text-grey text-sm'>{{signin.ranking?'第'+signin.ranking+'名':'暂无排名'}}</text>
+        </view>
+    </view>
+    <view class="cu-item {{signin.violation?'arrow':''}}">
+        <view class='content'>
+            <text class='icon-warn text-red'></text>
+            <text class='text-grey'>违规记录</text>
+        </view>
+        <view class='action'>
+            <text class='text-grey text-sm'>{{signin.violation?signin.violation+'条记录':'无'}}</text>
+        </view>
+    </view>
+</view>

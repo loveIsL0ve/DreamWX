@@ -1,0 +1,10 @@
+{
+  "disableScroll": true,
+  "usingComponents":{
+    "i-rate": "../../dist/rate/index",
+    "i-panel":"../../dist/panel/index",
+    "wux-cell-group": "../utils/cell-group/index",
+    "wux-cell": "../utils/cell/index",
+    "wux-rater": "../utils/rater/index"
+  }
+}
