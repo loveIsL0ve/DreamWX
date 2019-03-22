@@ -56,7 +56,7 @@ Page({
           })
         }
         if (countDownNum == 0) {      
-        clearInterval(that.data.timer);          
+        clearInterval(that.data.timer);
         //关闭定时器之后，可作其他处理codes go here
         console.log("timeUp")
         that.setData({

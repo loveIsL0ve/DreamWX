@@ -41,28 +41,51 @@ Page({
                       qr_info: codeInfo
                     }
                     app.appRequest('post', url, data, (res) => {
-                      if (res.code = 0) {
-                        if (res.type == 'OUT_MORNING_FAIL') {
-                          wx.showToast({
-                            title: '上午时段签退失败',
-                            image: '../../images/fail.svg',
-                          })
-                          return
+                      if (res.code == 0 ) {
+                        switch(res.type){
+                          case 'OUT_MORNING_FAIL':
+                            wx.showToast({
+                              title: '上午时段签退失败',
+                              image: '../../images/fail.svg',
+                            });
+                            return;
+                          case 'OUT_MORNING':
+                            wx.showToast({
+                              title: '上午签退成功'
+                            });
+                            return;
+                          case 'OUT_AFTERNOON':
+                            wx.showToast({
+                              title: '下午签退成功'
+                            });
+                            return;
                         }
-                        console.log(res)
-                        wx.showToast({
-                          title: '签退成功',
-                        })
                       } else if (res.code == 30023) {
                         wx.showToast({
-                          title: '还未签到，无法执行签退操作',
+                          title: '不是工作状态',
                           image: '../../images/fail.svg',
                         })
-                      }else if(res.code==30024){
+                      } else if(res.code==30024){
                         wx.showToast({
                           title: '未在指定区域签退',
                           image: '../../images/fail.svg',
                         })
+                      } else if(res.code==30020){
+                        wx.showToast({
+                          title: '不在签退时间内',
+                          image: '../../images/fail.svg',
+                        })
+                      } else if(res.code==30021){
+                        wx.showToast({
+                          title: '二维码过期',
+                          image: '../../images/fail.svg',
+                        })
+                      } else {
+                        wx.showToast({
+                          title: '签退失败',
+                          image: '../../images/fail.svg',
+                        });
+                        return;
                       }
                     })
               }
@@ -90,22 +113,36 @@ Page({
                     console.log()
                     app.appRequest('post', url, data, (res) => {
                       if (res.code == 0) {
-                        wx.showToast({
-                          title: '签到成功',
-                        })
+                        switch(res.type){
+                          case 'IN_CHANGE_SHIFTS':
+                            wx.showToast({
+                              title: '午间续签成功'
+                            });
+                            return;
+                          case 'IN_MORNING':
+                            wx.showToast({
+                              title: '上午签到成功'
+                            });
+                            return;
+                          case 'IN_AFTERNOON':
+                            wx.showToast({
+                              title: '下午签到成功'
+                            });
+                            return;
+                        }
                       }else if(res.code==30020){
                         wx.showToast({
-                          title: '不在活动签到时间区间内',
+                          title: '不在签到时间内',
                           image: '../../images/fail.svg',
                         })
                       }else if(res.code==30021){
                         wx.showToast({
-                          title: '用户二维码过期或失效',
+                          title: '二维码过期',
                           image: '../../images/fail.svg',
                         })
                       }else if(res.code==30022){
                         wx.showToast({
-                          title: '已经是工作状态无需签到',
+                          title: '已是工作状态',
                           image: '../../images/fail.svg',
                         })
                       }else if(res.code==30024){
@@ -113,6 +150,12 @@ Page({
                           title: '未在指定区域签到',
                           image: '../../images/fail.svg',
                         })
+                      } else {
+                        wx.showToast({
+                          title: '签到失败',
+                          image: '../../images/fail.svg',
+                        });
+                        return;
                       }
                     })
                   }

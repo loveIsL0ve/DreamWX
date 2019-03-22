@@ -1,0 +1,16 @@
+Page{
+    width: 100%;
+    height: 100%;
+    background-image: url('https://whusu.oss-cn-shanghai.aliyuncs.com/media/view/miniPg/%E4%B8%B4%E6%97%B6%E9%A2%84%E7%BA%A6%E5%87%AD%E8%AF%81%E5%BA%95%E5%9B%BE.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+}
+.body{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

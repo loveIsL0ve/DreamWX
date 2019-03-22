@@ -9,7 +9,6 @@
         </navigator>
     </view>
 </view>
-
 <view class="cu-list menu menu-avatar">
     <view class="cu-item {{signin.switch?'arrow':''}}">
         <view class="cu-avatar radius lg"

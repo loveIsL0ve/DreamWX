@@ -7,7 +7,9 @@
     "Page/cherryMap/cherryMap",
     "Page/index/index",
     "Page/component/out/out",
-    "Page/reservation/reservation"
+    "Page/reservation/reservation",
+    "Page/onsitebookinginterior/onsitebookinginterior",
+    "Page/reservation/qrcode/qrcode"
   ],
   "permission": {
     "scope.userLocation": {

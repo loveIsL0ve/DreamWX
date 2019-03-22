@@ -1,0 +1,14 @@
+<view class="cu-custom" style='width:100%;height:400rpx'>
+    <!--<image src='https://whusu.oss-cn-shanghai.aliyuncs.com/media/view/miniPg/%E6%A0%A1%E5%9B%AD%E5%8D%A1%E5%8F%B7%E6%95%B0%E9%87%8F%E5%85%B1%E4%BA%AB.png'-->
+           <!--mode='widthFix' class='png' style='width:100%;height:400rpx'></image>-->
+    <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+        <navigator class='action border-custom' open-type="navigateBack" delta="1" hover-class="none"
+                   style='width:{{Custom.width}}px;height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px)'>
+            <text class='icon-back text-white'></text>
+            <text class='icon-homefill text-white'></text>
+        </navigator>
+    </view>
+</view>
+<view class="body">
+<canvas class='canvas' style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px;" canvas-id='canvas' bindlongtap='save'></canvas>
+</view>

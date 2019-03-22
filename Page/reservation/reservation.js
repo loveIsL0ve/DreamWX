@@ -10,7 +10,17 @@ Page({
     },
 
     onLoad: function (options) {
-
+        let url = app.globalData.baseUrl +'reservation/getonlyuser'
+        app.appRequest('post',url,{},(res)=>{
+            console.log(res);
+            if(res && res.code == 30001) {
+                this.setData({
+                    modalName: 'Modal',
+                    tips: res.tips
+                })
+                wx.redirectTo({url: 'qrcode/qrcode?id='+res.id+'&encrypt='+res.encrypt});
+            }
+        })
     },
 
     getPhoneNumber: function (e) {
@@ -21,7 +31,7 @@ Page({
         let data={
             encryptedData:_enc,
             iv:_iv,
-            type: 'all'
+            type: true
         };
         var athration;
         wx.getStorage({
@@ -89,34 +99,32 @@ Page({
             })
             return false;
         }
-        reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/; 
-        if(reg.test(id)){ 
+        reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X)$)/; 
+        if(!reg.test(id)){ 
             this.setData({
                 modalName: 'Modal',
                 tips: '请输入正确的身份证号'
             })
             return false; 
-        } 
-        wx.request({
-            url: app.globalData.baseUrl + 'reservation/doprereservation',
-            method: 'post',
-            header: {
-                'content-type':  'application/x-www-form-urlencoded',
-            },
-            dataType: 'json',
-            data: {
-                id_number: id,
-                phone,
-                name
-            },
-            success: (res) => {
-                if(res.data && res.data.code == 0){
-                    
-                }
+        }
+        let url = app.globalData.baseUrl +'reservation/doprereservation'
+        app.appRequest('post',url,{
+            id_number: id,
+            phone,
+            name
+        },(res)=>{
+            console.log(res);
+            if(res && res.code == 30001) {
+                this.setData({
+                    modalName: 'Modal',
+                    tips: res.tips
+                })
+                return false;
+            } else if(res && res.code == 0){
+                wx.redirectTo({url: 'qrcode/qrcode?id='+res.id+'&encrypt='+res.encrypt});
             }
         })
     },
-
     hideModal(e) {
         this.setData({
             modalName: null
